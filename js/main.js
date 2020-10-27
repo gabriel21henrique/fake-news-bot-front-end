@@ -10,7 +10,8 @@ async function sendRequest() {
   await setDeviceType();
   await setNewsType();
 
-  const url = "http://localhost:3333/access";
+  // const url = "http://localhost:3333/access";
+  const url = "https://your-news-central-back-end.herokuapp.com/access";
 
   console.log(data);
 
