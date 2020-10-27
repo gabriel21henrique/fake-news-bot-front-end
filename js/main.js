@@ -13,8 +13,6 @@ async function sendRequest() {
   // const url = "http://localhost:3333/access";
   const url = "https://your-news-central-back-end.herokuapp.com/access";
 
-  console.log(data);
-
   let xhr = new XMLHttpRequest();
 
   xhr.open("POST", url, true);
@@ -31,11 +29,11 @@ async function sendRequest() {
     "dateTime": data.dateTime,
     "deviceType": data.deviceType,
     "newsType": data.newsType,
-    "location": {
-      "latitude": data.latitude,
-      "longitude": data.longitude,
-      "state": data.state
-    }
+    // "location": {
+    //   "latitude": data.latitude,
+    //   "longitude": data.longitude,
+    //   "state": data.state
+    // }
   });
 
   xhr.send(access);
@@ -71,7 +69,7 @@ function setLocation(position) {
   data.longitude = longitude;
   const key = '2ecd535e1bd44d10bbbbbbca22af4728';
   $.get(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${key}`)
-    .then(response => data.location.state = response.results[0].components.state);
+    .then(response => data.state = response.results[0].components.state);
 };
 
 async function setDeviceType() {
